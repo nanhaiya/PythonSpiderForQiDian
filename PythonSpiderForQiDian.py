@@ -30,5 +30,5 @@ def pa(url,bookName):
 if __name__ == '__main__':
     #起点书籍爬虫
     url=r"https://read.qidian.com/chapter/kpwCq4fKJk01/LGKHGy9k73Q1"        #第一章路径
-    bookName="庆余年.txt"              #书名+.txt
+    bookName="庆余年.txt"              #书名+.txt,或写成绝对路径，如:"d:python/text/庆余年.txt"
     pa(url,bookName)
