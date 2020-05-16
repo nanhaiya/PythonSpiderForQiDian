@@ -14,18 +14,15 @@ def pa(url,bookName):
         print(m.span.string)
         string+=m.span.string+"\r\n"
     index=r"\S+"
-    body=soup.find_all(attrs={"class":"read-content j_readContent"})
-    # print(body[0].contents[1])
-    body=str(body[0].contents[1])
-    for j in re.findall(index,body):
-        j=str(j).replace("<p>","")
-        j=j.replace("</p>","")
-        print(j)
-        string+=j+"\r\n"
+    body=soup.find_all(attrs={"class":"read-content j_readContent"})[0]
+    body=body.find_all("p")
+    for j in body:
+        string+=j.getText().strip()+"\r\n"
 
+    print(string)
     with open(bookName,"ab+") as file:
         file.write(string.encode("utf-8"))
-    pa(nextLine)
+    pa(nextLine,bookName)
 
 if __name__ == '__main__':
     #起点书籍爬虫
